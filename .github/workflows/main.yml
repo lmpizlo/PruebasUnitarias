@@ -1,0 +1,27 @@
+name: Ejecutar pruebas unitarias
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v2
+
+    - name: Configurar Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Instalar dependencias
+      run: |
+        python -m pip install --upgrade pip
+        # CCambiar dependiendo de las dependencias que se usen
+        pip install -r requirements.txt  
+
+    - name: Ejecutar pruebas unitarias
+      run: |
+      # Nombre del archivo
+        python test_operaciones.py  
